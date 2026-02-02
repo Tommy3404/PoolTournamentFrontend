@@ -1,0 +1,92 @@
+.loginpage{
+    position: relative;
+}
+
+.header{
+    background-color: #072a20;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.body{
+    background-color: #0B3D2E;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+.adminonly{
+    color: #f5f5f5;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.login1{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.login2{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    padding: 5px;
+}
+
+.loginbutton{
+    background-color: #0090ff;
+    color: #f5f5f5;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.guestlink{
+    color: #0090ff;
+    text-decoration: underline;
+    padding: 3px;
+}
+
+.leftside{
+    width: 20px;
+    height: 100vh;
+    position: absolute;
+    right: 1250px;
+    background-color: #072a20;
+}
+
+.rightside{
+    width: 20px;
+    height: 100vh;
+    position: absolute;
+    left: 1250px;
+    background-color: #072a20;
+}
+
+.bottomside{
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top: 900px;
+    background-color: #072a20;
+}
+
