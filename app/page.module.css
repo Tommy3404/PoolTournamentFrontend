@@ -66,27 +66,5 @@
     padding: 3px;
 }
 
-.leftside{
-    width: 20px;
-    height: 100vh;
-    position: absolute;
-    right: 1250px;
-    background-color: #072a20;
-}
 
-.rightside{
-    width: 20px;
-    height: 100vh;
-    position: absolute;
-    left: 1250px;
-    background-color: #072a20;
-}
-
-.bottomside{
-    width: 100vw;
-    height: 10vh;
-    position: absolute;
-    top: 900px;
-    background-color: #072a20;
-}
 
