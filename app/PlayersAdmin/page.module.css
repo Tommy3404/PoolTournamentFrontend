@@ -50,3 +50,54 @@
     margin-top: -55px;
     
 }
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popupinner {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 90%;
+}
+
+.playerinfo{
+    color: #f5f5f5;
+}
+
+.popupbuttons {
+  display: flex;
+  /* justify-content: flex-end; */
+  gap: 1rem; /* space between Add/Save and Cancel */
+  margin-top: 1.5rem;
+}
+
+.popupfields{
+    margin-top: 20px;
+}
+
+.playerActions {
+  display: inline-flex;
+  gap: 0.75rem;
+  margin-left: 0.75rem;
+}
+
+.playerinfo{
+    margin-top: 50px;
+}
+
+.playerinfo li {
+    font-size: 26px;
+}
+
+.playerinfo strong {
+    font-size: 28px;
+}
