@@ -1,7 +1,11 @@
 "use client";
 
 import style from "./page.module.css";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
+
+
 
 /* ---------------- types ---------------- */
 
@@ -34,6 +38,8 @@ const getWinPercentage = (wins: number, losses: number) => {
 /* ---------------- page ---------------- */
 
 export default function PlayersAdmin() {
+    const [open, setOpen] = useState(false);
+    
   const [players, setPlayers] = useState<Player[]>([]);
   const [editMode, setEditMode] = useState(false);
 
@@ -104,8 +110,25 @@ export default function PlayersAdmin() {
     <section className={style.playerpage}>
       {/* ---------- Header ---------- */}
       <div className={style.header}>
-        <h1>ADET Pool Tournament</h1>
+  <h1>ADET Pool Tournament</h1>
+
+  <div className={style.options}>
+    <button onClick={() => setOpen(true)}>Open Popup</button>
+
+    {open && (
+      <div className={style.popup}>
+        <div className={style.popupinner}>
+          <h2>
+            <Link href="/">Back to Login</Link>
+          </h2>
+
+          <button onClick={() => setOpen(false)}>close</button>
+        </div>
       </div>
+    )}
+  </div>
+</div>
+
 
       {/* ---------- Body ---------- */}
       <div className={style.body}>

@@ -62,7 +62,7 @@
 }
 
 .popupinner {
-  background: white;
+  background-color: blue;
   padding: 2rem;
   border-radius: 8px;
   min-width: 300px;
@@ -100,4 +100,18 @@
 
 .playerinfo strong {
     font-size: 28px;
+}
+
+.options{
+    position: relative;
+    background-color: blue;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1000px;
+    margin-top: -30px;
+    /* width: 200px;
+    height: 100px; */
+    padding: 20px;
 }
