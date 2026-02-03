@@ -72,9 +72,9 @@ export default function PlayersGuest() {
             <ul>
               {players.map((player) => (
                 <li key={player.id}>
-                  <Link href={`/players/${player.id}`}>
+                  <p data-player-id={player.id}>
                     {player.name}
-                  </Link>
+                  </p>
                 </li>
               ))}
             </ul>
