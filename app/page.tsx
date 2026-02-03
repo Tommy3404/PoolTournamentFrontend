@@ -20,14 +20,12 @@ export default function Home() {
         <input type="password" placeholder="Password" />
       </div>
       <div className={style.loginbutton}>
-        <button>Login</button>
+        {/* <button>Login</button> */}
+        <Link href="/PlayersAdmin">Login</Link>
       </div>
       <div className={style.guestlink}>
-        <Link href="/leaderboard">Continue as Guest</Link>
+        <Link href="/PlayersGuest">Continue as Guest</Link>
       </div>
-      <div className={style.leftside}></div>
-      <div className={style.rightside}></div>
-      <div className={style.bottomside}></div>
     </div>
 
     </section>
