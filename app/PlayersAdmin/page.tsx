@@ -47,8 +47,10 @@ export default function PlayersAdmin() {
   const [editingPlayer, setEditingPlayer] = useState<Player | null>(null);
 
   const [name, setName] = useState("");
-  const [wins, setWins] = useState(0);
-  const [losses, setLosses] = useState(0);
+//   const [wins, setWins] = useState(0);
+//   const [losses, setLosses] = useState(0);
+const [wins, setWins] = useState<string>("");
+const [losses, setLosses] = useState<string>("");
 
   useEffect(() => {
     setPlayers(getPlayers());
@@ -57,46 +59,50 @@ export default function PlayersAdmin() {
   /* ---------- handlers ---------- */
 
   const openAddPopup = () => {
-    setEditingPlayer(null);
-    setName("");
-    setWins(0);
-    setLosses(0);
-    setShowPopup(true);
-  };
+  setEditingPlayer(null);
+  setName("");
+  setWins("");
+  setLosses("");
+  setShowPopup(true);
+};
 
-  const openEditPopup = (player: Player) => {
-    setEditingPlayer(player);
-    setName(player.name);
-    setWins(player.wins);
-    setLosses(player.losses);
-    setShowPopup(true);
-  };
+const openEditPopup = (player: Player) => {
+  setEditingPlayer(player);
+  setName(player.name);
+  setWins(player.wins.toString());
+  setLosses(player.losses.toString());
+  setShowPopup(true);
+};
 
   const savePlayer = () => {
-    let updatedPlayers: Player[];
+  const parsedWins = Number(wins) || 0;
+  const parsedLosses = Number(losses) || 0;
 
-    if (editingPlayer) {
-      updatedPlayers = players.map((p) =>
-        p.id === editingPlayer.id
-          ? { ...p, name, wins, losses }
-          : p
-      );
-    } else {
-      updatedPlayers = [
-        ...players,
-        {
-          id: Date.now(),
-          name,
-          wins,
-          losses,
-        },
-      ];
-    }
+  let updatedPlayers: Player[];
 
-    setPlayers(updatedPlayers);
-    savePlayers(updatedPlayers);
-    setShowPopup(false);
-  };
+  if (editingPlayer) {
+    updatedPlayers = players.map((p) =>
+      p.id === editingPlayer.id
+        ? { ...p, name, wins: parsedWins, losses: parsedLosses }
+        : p
+    );
+  } else {
+    updatedPlayers = [
+      ...players,
+      {
+        id: Date.now(),
+        name,
+        wins: parsedWins,
+        losses: parsedLosses,
+      },
+    ];
+  }
+
+  setPlayers(updatedPlayers);
+  savePlayers(updatedPlayers);
+  setShowPopup(false);
+};
+
 
   const deletePlayer = (id: number) => {
     const updatedPlayers = players.filter((p) => p.id !== id);
@@ -195,14 +201,14 @@ export default function PlayersAdmin() {
                 type="number"
                 placeholder="Wins"
                 value={wins}
-                onChange={(e) => setWins(Number(e.target.value))}
+                onChange={(e) => setWins(e.target.value)}
               />
 
               <input
                 type="number"
                 placeholder="Losses"
                 value={losses}
-                onChange={(e) => setLosses(Number(e.target.value))}
+                onChange={(e) => setLosses(e.target.value)}
               />
             </div>
 
