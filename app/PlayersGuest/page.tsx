@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 type Player = {
   id: number;
-  name: string;
+  disName: string;
   wins: number;
   losses: number;
 };
@@ -71,7 +71,7 @@ export default function PlayersGuest() {
             <ul>
               {players.map((player) => (
                 <li key={player.id}>
-                  <strong>{player.name}</strong> — {player.wins}W /{" "}
+                  <strong>{player.disName}</strong> — {player.wins}W /{" "}
                   {player.losses}L (
                   {getWinPercentage(player.wins, player.losses)}%)
                 </li>

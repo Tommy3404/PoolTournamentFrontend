@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 type Player = {
   id: number;
-  name: string;
+  disName: string;
   wins: number;
   losses: number;
 };
@@ -63,7 +63,7 @@ export default function PlayersAdmin() {
 
   const openEditPopup = (player: Player) => {
     setEditingPlayer(player);
-    setName(player.name);
+    setName(player.disName);
     setWins(player.wins.toString());
     setLosses(player.losses.toString());
     setShowPopup(true);
@@ -74,11 +74,11 @@ export default function PlayersAdmin() {
     const parsedLosses = Number(losses) || 0;
 
     if (editingPlayer) {
-      await fetch(`${BACKEND}/players/${editingPlayer.id}`, {
-        method: "PUT",
+      await fetch(`${BACKEND}/players/${editingPlayer.id}/record`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
+          newName: name,
           wins: parsedWins,
           losses: parsedLosses,
         }),
@@ -88,9 +88,10 @@ export default function PlayersAdmin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
+          displayName: name,
           wins: parsedWins,
           losses: parsedLosses,
+          tournamentId: "f8cefaff-fedb-4775-ad05-8006cc2b3dbd"
         }),
       });
     }
@@ -155,7 +156,7 @@ export default function PlayersAdmin() {
             <ul>
               {players.map((player) => (
                 <li key={player.id}>
-                  <strong>{player.name}</strong> — {player.wins}W /{" "}
+                  <strong>{player.disName}</strong> — {player.wins}W /{" "}
                   {player.losses}L (
                   {getWinPercentage(player.wins, player.losses)}%)
                   {editMode && (
