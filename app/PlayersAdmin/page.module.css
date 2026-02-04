@@ -8,6 +8,11 @@
     padding: 20px;
 }
 
+.header h1{
+    position: relative;
+    top: 30px;
+}
+
 .body{
     background-color: #0B3D2E;
     width: 100%;
