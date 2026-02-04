@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 type Player = {
   id: number;
   name: string;
+  wins: number;
+  losses: number;
 };
 
 const STORAGE_KEY = "players";
@@ -20,6 +22,12 @@ const getPlayers = (): Player[] => {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 };
 
+const getWinPercentage = (wins: number, losses: number) => {
+  const total = wins + losses;
+  if (total === 0) return 0;
+  return Math.round((wins / total) * 100);
+};
+
 /* ---------------- page ---------------- */
 
 export default function PlayersGuest() {
@@ -27,10 +35,8 @@ export default function PlayersGuest() {
   const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-    // initial load
     setPlayers(getPlayers());
 
-    // listen for updates from other pages / tabs
     const handleStorageChange = () => {
       setPlayers(getPlayers());
     };
@@ -48,11 +54,14 @@ export default function PlayersGuest() {
         <div className={style.options}>
           <button onClick={() => setOpen(true)}>Open Popup</button>
 
+          {/* ---------- Popup ---------- */}
           {open && (
             <div className={style.popup}>
               <div className={style.popupinner}>
-                <h2>Testing Popup</h2>
-                <button onClick={() => setOpen(false)}>close</button>
+                <h2>
+                  <Link href="/">Back to Login</Link>
+                </h2>
+                <button onClick={() => setOpen(false)}>Close</button>
               </div>
             </div>
           )}
@@ -72,9 +81,11 @@ export default function PlayersGuest() {
             <ul>
               {players.map((player) => (
                 <li key={player.id}>
-                  <Link href={`/players/${player.id}`}>
-                    {player.name}
-                  </Link>
+                  <p data-player-id={player.id}>
+                    <strong>{player.name}</strong> — {player.wins}W /{" "}
+                    {player.losses}L (
+                    {getWinPercentage(player.wins, player.losses)}%)
+                  </p>
                 </li>
               ))}
             </ul>
