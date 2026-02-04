@@ -13,14 +13,9 @@ type Player = {
   losses: number;
 };
 
-const STORAGE_KEY = "players";
+const BACKEND = "https://pool-tournament-challenge-backend.vercel.app"
 
 /* ---------------- helpers ---------------- */
-
-const getPlayers = (): Player[] => {
-  if (typeof window === "undefined") return [];
-  return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-};
 
 const getWinPercentage = (wins: number, losses: number) => {
   const total = wins + losses;
@@ -35,14 +30,10 @@ export default function PlayersGuest() {
   const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-    setPlayers(getPlayers());
-
-    const handleStorageChange = () => {
-      setPlayers(getPlayers());
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    fetch(`${BACKEND}/players`)
+      .then((res) => res.json())
+      .then(setPlayers)
+      .catch(console.error);
   }, []);
 
   return (
@@ -54,7 +45,6 @@ export default function PlayersGuest() {
         <div className={style.options}>
           <button onClick={() => setOpen(true)}>Open Popup</button>
 
-          {/* ---------- Popup ---------- */}
           {open && (
             <div className={style.popup}>
               <div className={style.popupinner}>
@@ -81,11 +71,9 @@ export default function PlayersGuest() {
             <ul>
               {players.map((player) => (
                 <li key={player.id}>
-                  <p data-player-id={player.id}>
-                    <strong>{player.name}</strong> — {player.wins}W /{" "}
-                    {player.losses}L (
-                    {getWinPercentage(player.wins, player.losses)}%)
-                  </p>
+                  <strong>{player.name}</strong> — {player.wins}W /{" "}
+                  {player.losses}L (
+                  {getWinPercentage(player.wins, player.losses)}%)
                 </li>
               ))}
             </ul>
