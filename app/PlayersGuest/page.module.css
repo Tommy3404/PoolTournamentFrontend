@@ -42,11 +42,46 @@
     align-items: center;
     margin-left: 300px;
     margin-top: -30px;
-    /* width: 200px;
-    height: 100px; */
     padding: 20px;
+    font-size: 15px;
+  text-align: center; 
 }
 
 .playerinfo{
     color: #f5f5f5;
+}
+
+.playerinfo li {
+  font-size: 26px;
+}
+
+.playerinfo strong {
+  font-size: 28px;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  
+}
+
+.popupinner {
+  background-color: blue; /* your preferred popup color */
+  color: #f5f5f5;         /* readable text */
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 24px;              /* increase text size */
+  text-align: center; 
 }

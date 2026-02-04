@@ -8,6 +8,11 @@
     padding: 20px;
 }
 
+.header h1{
+    position: relative;
+    top: 30px;
+}
+
 .body{
     background-color: #0B3D2E;
     width: 100%;
@@ -62,7 +67,8 @@
 }
 
 .popupinner {
-  background: white;
+  background-color: blue;
+  color: #f5f5f5;
   padding: 2rem;
   border-radius: 8px;
   min-width: 300px;
@@ -100,4 +106,18 @@
 
 .playerinfo strong {
     font-size: 28px;
+}
+
+.options{
+    position: relative;
+    background-color: blue;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1000px;
+    margin-top: -30px;
+    /* width: 200px;
+    height: 100px; */
+    padding: 20px;
 }
